@@ -11,7 +11,7 @@ from app.main import outdated_products
     [
         (datetime.date(2022, 2, 2), ["duck"]),
         (datetime.date(2022, 1, 30), []),
-        (datetime.date(2022, 2, 5), ["chicken", "duck"]),
+        (datetime.date(2022, 2, 5), ["duck"]),
         (datetime.date(2022, 2, 11), ["salmon", "chicken", "duck"])
     ]
 )
@@ -38,4 +38,4 @@ def test_outdated_products(
     ]
     with mock.patch("datetime.date") as mock_date:
         mock_date.today.return_value = mocked_date
-        assert outdated_products(products)
+        assert outdated_products(products) == result
